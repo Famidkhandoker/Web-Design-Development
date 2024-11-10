@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping-cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <div class="container">
+                <div class="row1">
+                    <img class="img1" src="iPhone-11-Black-5949.jpg" alt="">
+                    <h5>iphone 11 128GB Black</h5>
+                   <button id="phone-decrease" class="btn btn-default"><i class="fa-solid fa-minus"></i></button> 
+                    <input id="phone-count" type="text" class="form-control text-control" value="1">
+                <button id ="phone-increase "class="btn btn-default"><i class="fa-solid fa-plus"></i></button>
+                    <h5 id="phone-total">$ 1278</h5>
+                </div>
+                <br>
+                <div class="row2">
+                    <img  class ="img2"src="2316-54894.jpg" alt="">
+                    <h5>iphone 11 silicone Case- Black</h5>
+                    <button  id="case-decrease"class="btn btn-default"><i class="fa-solid fa-minus"></i></button>
+                    <input id="case-count" type="text" class="form-control text-control" value="1">
+                    <button id="case-increase" class="btn btn-default"><i class="fa-solid fa-plus"></i></button>
+                    <h5 id="case-total">$ 59</h5>
+                </div>
+                <br>
+                <div class="row3">
+                    <div class="subtotal">
+                        <h5>subtotal:</h5>
+                    <h5 id="total-price">$ 1,278</h5>
+                    </div>
+                    <div class="Tax">
+                        <h5>Tax:</h5>
+                        <h5 id="tax-amount">$ 0</h5>
+                    </div>
+                   <div class="Total">
+                    <h5>Total:</h5>
+                    <h5 id="grand-total">$ 1,278</h5>
+                   </div>
+                </div>
+           <br>
+           <div class="row4">
+            <button class="Button">check me</button>
+           </div>
+        </div>
+    </section>
+
+<script>
+    document.getElementById("phone-increase ").addEventListener("click",function(){
+        const caseInput=document.getElementById("phone-count");
+        const caseCount=parseInt(caseInput.value)
+       const caseNewCount= caseCount+1;
+       caseInput.value=caseNewCount;
+       const caseTotal=caseNewCount*1278;
+       document.getElementById("phone-total").innerText= '$'+ caseTotal;
+       calculateTotal();
+     
+    });
+    
+    document.getElementById("phone-decrease").addEventListener("click",function(){
+        const caseInput=document.getElementById("phone-count");
+         const caseCount= parseInt(caseInput.value);
+         const caseNewCount=caseCount-1;
+         caseInput.value=caseNewCount;
+         const caseTotal=caseNewCount*1278;
+         document.getElementById("phone-total").innerText= '$' + caseTotal; 
+         calculateTotal();
+    });
+    
+    
+    document.getElementById("case-increase").addEventListener("click",function(){
+     
+        const caseInput=document.getElementById("case-count");
+        const caseCount=parseInt(caseInput.value)
+       const caseNewCount= caseCount+1;
+       caseInput.value=caseNewCount;
+       const caseTotal=caseNewCount*59;
+       document.getElementById("case-total").innerText= '$'+ caseTotal;
+       calculateTotal();
+       
+    });
+    
+    document.getElementById("case-decrease").addEventListener("click",function(){
+        const caseInput=document.getElementById("case-count");
+         const caseCount= parseInt(caseInput.value);
+         const caseNewCount=caseCount-1;
+         caseInput.value=caseNewCount;
+         const caseTotal=caseNewCount*59;
+         document.getElementById("case-total").innerText= '$' + caseTotal;
+         calculateTotal();
+    
+    });
+    function calculateTotal(){
+ 
+        const phoneInput=document.getElementById("phone-count");
+        const phoneCount=parseInt(phoneInput.value);
+    
+        const caseInput=document.getElementById("case-count");
+        const caseCount=parseInt(caseInput.value);
+    
+        const totalPrice =phoneCount*1278 +caseCount*59;
+        document.getElementById("total-price").innerText='$'+totalPrice;
+    
+        const tax= Math.round(totalPrice*0.1);
+        document.getElementById("tax-amount").innerText='$'+ tax;
+        const grandTotal=totalPrice + tax;
+        document.getElementById("grand-total").innerText='$'+grandTotal;   
+    }
+</script>
+</body>
+</html>
